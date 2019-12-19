@@ -20,7 +20,7 @@ if ($configfile = fopen($gatewayConfigPath,'r')) {
 
 //Load the DStarRepeater config file
 $configdstar = array();
-if ($configdstarfile = fopen('/etc/dstarrepeater','r')) {
+if ($configdstarfile = fopen('/usr/local/etc/dstarrepeater','r')) {
         while ($line1 = fgets($configdstarfile)) {
 		if (strpos($line1, '=') !== false) {
                 	list($key1,$value1) = preg_split('/=/',$line1);
@@ -32,36 +32,36 @@ if ($configdstarfile = fopen('/etc/dstarrepeater','r')) {
 }
 
 //Load the dmrgateway config file
-$dmrGatewayConfigFile = '/etc/dmrgateway';
+$dmrGatewayConfigFile = '/usr/local/etc/dmrgateway';
 if (fopen($dmrGatewayConfigFile,'r')) { $configdmrgateway = parse_ini_file($dmrGatewayConfigFile, true); }
 
 //Load the dapnetgateway config file
-$dapnetGatewayConfigFile = '/etc/dapnetgateway';
+$dapnetGatewayConfigFile = '/usr/local/etc/dapnetgateway';
 if (fopen($dapnetGatewayConfigFile,'r')) { $configdapnetgateway = parse_ini_file($dapnetGatewayConfigFile, true); }
 
 // Load the ysf2dmr config file
-if (file_exists('/etc/ysf2dmr')) {
-	$ysf2dmrConfigFile = '/etc/ysf2dmr';
+if (file_exists('/usr/local/etc/ysf2dmr')) {
+	$ysf2dmrConfigFile = '/usr/local/etc/ysf2dmr';
 	if (fopen($ysf2dmrConfigFile,'r')) { $configysf2dmr = parse_ini_file($ysf2dmrConfigFile, true); }
 }
 // Load the ysf2nxdn config file
-if (file_exists('/etc/ysf2nxdn')) {
-	$ysf2nxdnConfigFile = '/etc/ysf2nxdn';
+if (file_exists('/usr/local/etc/ysf2nxdn')) {
+	$ysf2nxdnConfigFile = '/usr/local/etc/ysf2nxdn';
 	if (fopen($ysf2nxdnConfigFile,'r')) { $configysf2nxdn = parse_ini_file($ysf2nxdnConfigFile, true); }
 }
 // Load the ysf2p25 config file
-if (file_exists('/etc/ysf2p25')) {
-	$ysf2p25ConfigFile = '/etc/ysf2p25';
+if (file_exists('/usr/local/etc/ysf2p25')) {
+	$ysf2p25ConfigFile = '/usr/local/etc/ysf2p25';
 	if (fopen($ysf2p25ConfigFile,'r')) { $configysf2p25 = parse_ini_file($ysf2p25ConfigFile, true); }
 }
 // Load the dmr2ysf config file
-if (file_exists('/etc/dmr2ysf')) {
-	$dmr2ysfConfigFile = '/etc/dmr2ysf';
+if (file_exists('/usr/local/etc/dmr2ysf')) {
+	$dmr2ysfConfigFile = '/usr/local/etc/dmr2ysf';
 	if (fopen($dmr2ysfConfigFile,'r')) { $configdmr2ysf = parse_ini_file($dmr2ysfConfigFile, true); }
 }
 // Load the dmr2nxdn config file
-if (file_exists('/etc/dmr2nxdn')) {
-	$dmr2nxdnConfigFile = '/etc/dmr2nxdn';
+if (file_exists('/usr/local/etc/dmr2nxdn')) {
+	$dmr2nxdnConfigFile = '/usr/local/etc/dmr2nxdn';
 	if (fopen($dmr2nxdnConfigFile,'r')) { $configdmr2nxdn = parse_ini_file($dmr2nxdnConfigFile, true); }
 }
 ?>
@@ -342,7 +342,7 @@ if ( $testMMDVModeNXDN == 1 || isset($testYSF2NXDN) || isset($testDMR2NXDN) ) { 
 		echo "<tr><th style=\"width:70px\">RAN</th><td>".getConfigItem("NXDN", "RAN", $mmdvmconfigs)."</td></tr>\n";
 	}
 	echo "<tr><th colspan=\"2\">".$lang['nxdn_net']."</th></tr>\n";
-	if (file_exists('/etc/nxdngateway')) {
+	if (file_exists('/usr/local/etc/nxdngateway')) {
 		echo "<tr><td colspan=\"2\"style=\"background: #ffffff;\">".getActualLink($logLinesNXDNGateway, "NXDN")."</td></tr>\n";
 	} else {
 		echo "<tr><td colspan=\"2\"style=\"background: #ffffff;\">Linked to: TG65000</td></tr>\n";

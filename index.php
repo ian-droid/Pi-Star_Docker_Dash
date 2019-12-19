@@ -82,14 +82,14 @@ if ($_SERVER["PHP_SELF"] == "/admin/index.php") {
 	echo '</div>'."\n";
 	}
 // First lets figure out if we are in MMDVMHost mode, or dstarrepeater mode;
-if (file_exists('/etc/dstar-radio.mmdvmhost')) {
+ if (file_exists('/usr/local/etc/dstar-radio.mmdvmhost')) {
 	include 'config/config.php';					// MMDVMDash Config
 	include_once 'mmdvmhost/tools.php';				// MMDVMDash Tools
 
 	function getMMDVMConfigFileContent() {
 		// loads /etc/mmdvmhost into array for further use
 		$conf = array();
-		if ($configs = @fopen('/etc/mmdvmhost', 'r')) {
+		if ($configs = @fopen('/usr/local/etc/mmdvmhost', 'r')) {
 			while ($config = fgets($configs)) {
 				array_push($conf, trim ( $config, " \t\n\r\0\x0B"));
 			}
@@ -196,7 +196,7 @@ if (file_exists('/etc/dstar-radio.mmdvmhost')) {
 		echo '</div>'."\n";
 	}
 
-} elseif (file_exists('/etc/dstar-radio.dstarrepeater')) {
+} elseif (file_exists('/usr/local/etc/dstar-radio.dstarrepeater')) {
         echo '<div class="contentwide">'."\n";
 	include 'dstarrepeater/gateway_software_config.php';		// dstarrepeater gateway config
 	echo '<script type="text/javascript">'."\n";
